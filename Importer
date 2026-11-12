@@ -1,1 +1,32 @@
+"""Read-only G HUB settings.db importer. Python 3.10+, standard library only."""
+import argparse, json, sqlite3
+from pathlib import Path
+
+def import_settings(path):
+    uri = Path(path).resolve().as_uri() + '?mode=ro'
+    with sqlite3.connect(uri, uri=True) as db:
+        row = db.execute('SELECT file FROM data ORDER BY _id DESC LIMIT 1').fetchone()
+    if not row:
+        raise ValueError('No G HUB settings record found')
+    data = json.loads(row[0])
+    cards = {card.get('id'):card for card in data.get('cards',{}).get('cards',[])}
+    result = {'source': 'G HUB settings.db', 'profiles': []}
+    for profile in data.get('profiles',{}).get('profiles',[]):
+        mappings = []
+        for assignment in profile.get('assignments',[]):
+            card = cards.get(assignment.get('cardId'),{})
+            mappings.append({'slot':assignment.get('slotId'), 'name':card.get('name','Unknown'),
+                             'attribute':card.get('attribute'), 'macro':card.get('macro'),
+                             'card_id':assignment.get('cardId')})
+        result['profiles'].append({'name':profile.get('name'), 'assignments':mappings})
+    return result
+
+if __name__ == '__main__':
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('database', help='Path to settings.db')
+    parser.add_argument('--output',default='g602_import.json')
+    args=parser.parse_args()
+    output=import_settings(args.database)
+    Path(args.output).write_text(json.dumps(output,indent=2),encoding='utf-8')
+    print(f"Imported {len(output['profiles'])} profiles; " + ', '.join(str(len(p['assignments']))+' assignments' for p in output['profiles']))
 
