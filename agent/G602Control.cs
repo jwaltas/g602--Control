@@ -36,7 +36,7 @@ class G602Control : Form {
     readonly NumericUpDown tapWindow=new NumericUpDown();
     readonly NumericUpDown typingDelay=new NumericUpDown();
     TapClassifier taps;Dictionary<string,object> doubleMacros;
-    Dictionary<string,object> macros;RawInputWindow input;Task playback;bool enabled,verified,closing,settingUp,playing;
+    Dictionary<string,object> macros;RawInputWindow input;Task playback;bool enabled,verified,closing,settingUp,playing,exitRequested;
     IntPtr activeWindow;WinEvent focusCallback;IntPtr focusHook;bool stopHotkey;
     readonly NotifyIcon tray=new NotifyIcon();
     readonly string sessionName="session-"+DateTime.Now.ToString("yyyyMMdd-HHmmss")+".jsonl";
@@ -100,16 +100,19 @@ class G602Control : Form {
         tapTimer.Tick+=delegate{tapTimer.Stop();foreach(var decision in taps.Flush(tapClock.ElapsedMilliseconds))Dispatch(decision);ScheduleTaps();};
         readinessRetry.Tick+=async delegate{readinessRetry.Stop();if(closing || settingUp || verified)return;retryCount++;await Profile(false);if(!verified && retryCount<3)ScheduleReadinessRetry();};
         FormClosing+=delegate(object sender,FormClosingEventArgs e){
+            if(e.CloseReason==CloseReason.UserClosing && !exitRequested){e.Cancel=true;HideEditor();return;}
             bool systemExit=e.CloseReason==CloseReason.WindowsShutDown || e.CloseReason==CloseReason.TaskManagerClosing;
-            if(settingUp && !systemExit){e.Cancel=true;Status("Finishing the profile operation. Please wait before closing.");return;}
+            if(settingUp && !systemExit){e.Cancel=true;exitRequested=false;Status("Finishing the profile operation. Please wait before exiting.");return;}
             if(playback!=null && !playback.IsCompleted && !systemExit){e.Cancel=true;closing=true;Stop();Task.Delay(50).ContinueWith(delegate{Ui(delegate{Close();});});return;}
             closing=true;cancel.Set();ClearTaps();readinessRetry.Dispose();tapTimer.Dispose();if(input!=null)input.Dispose();if(stopHotkey)UnregisterHotKey(Handle,1);if(focusHook!=IntPtr.Zero)UnhookWinEvent(focusHook);tray.Dispose();if(playback==null || playback.IsCompleted)cancel.Dispose();
         };
         tray.Icon=SystemIcons.Application;tray.Text="G602 Control";
-        var menu=new ContextMenuStrip();menu.Items.Add("Open",null,delegate{OpenEditor();});menu.Items.Add(trayPause);trayPause.Click+=delegate{if(!activation.PauseRequested)Stop();else{if(dirty || editorLoadError!=null){Status("Save valid edits before resuming.");return;}activation.PauseRequested=false;RefreshPlayback();Status(enabled?"Default profile active — Rhino 8 only.":"Profile unavailable. Check receiver or use Advanced → Recheck receiver.");}};menu.Items.Add("Exit",null,delegate{Close();});tray.ContextMenuStrip=menu;
+        var menu=new ContextMenuStrip();menu.Items.Add("Open",null,delegate{OpenEditor();});menu.Items.Add(trayPause);trayPause.Click+=delegate{if(!activation.PauseRequested)Stop();else{if(dirty || editorLoadError!=null){Status("Save valid edits before resuming.");return;}activation.PauseRequested=false;RefreshPlayback();Status(enabled?"Default profile active — Rhino 8 only.":"Profile unavailable. Check receiver or use Advanced → Recheck receiver.");}};menu.Items.Add("Exit",null,delegate{RequestExit();});tray.ContextMenuStrip=menu;
         tray.DoubleClick+=delegate{OpenEditor();};
-        Resize+=delegate{if(WindowState==FormWindowState.Minimized){tray.Visible=true;Hide();}};
+        Resize+=delegate{if(WindowState==FormWindowState.Minimized)HideEditor();};
     }
+    void HideEditor(){tray.Visible=true;Hide();ShowInTaskbar=false;}
+    public void RequestExit(){exitRequested=true;Close();}
     public void OpenEditor(){if(closing)return;ShowInTaskbar=true;Show();WindowState=FormWindowState.Normal;Activate();}
     public void RequestOpen(){Ui(OpenEditor);}
     public async Task InitializeRuntime(){

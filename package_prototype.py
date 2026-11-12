@@ -7,7 +7,7 @@ import sys
 import zipfile
 
 def package(repo,outputs,library):
-    version='0.3.0'
+    version='0.3.1'
     destination=outputs/f'G602-Control-{version}'
     app=destination/'App'
     seed=destination/'Seed'

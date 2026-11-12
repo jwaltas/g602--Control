@@ -1,7 +1,7 @@
 # G602 Control
 
 A small Windows 11 x64 background app for Logitech G602 macros in Rhino 8.
-Version 0.3.0 includes its own Python runtime for brief receiver/profile checks.
+Version 0.3.1 includes its own Python runtime for brief receiver/profile checks.
 Normal playback runs in the compiled app without a Python process.
 
 ## Install

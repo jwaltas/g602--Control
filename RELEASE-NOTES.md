@@ -1,9 +1,7 @@
-G602 Control 0.3.0 for Windows 11 x64 and Rhino 8.
+G602 Control 0.3.1 fixes closing the editor from the tray.
 
-Download G602-Control-0.3.0.zip below and extract it completely. Close any running G602 Control, run Install or Update G602 Control.exe, then Open G602 Control.exe. Python is included. No administrator rights are needed. This build is unsigned.
+The window X now hides the editor and leaves the background app running. Minimize also returns to the tray. To quit, right-click the tray icon and choose Exit. Unsaved edits remain in the hidden editor; save or revert edits to resume playback.
 
-G4-G9 support editable single and double tap macros. G7 double tap defaults to DimAligned. Optional Windows login startup runs quietly in the tray. Updates preserve your saved macros and timings. Keep G HUB closed.
+Download and extract G602-Control-0.3.1.zip. Exit the old app from its tray menu before running Install or Update G602 Control.exe, then use Open G602 Control.exe. Updates preserve saved macros, timing and Windows startup preferences. Python is included. Windows 11 x64 and Rhino 8; keep G HUB closed.
 
-The development-PC owner verified macro playback, double taps, editing, sleep/wake, USB receiver reconnect, mouse power cycling, and PC restart. Automated build checks simulate output without sending real keys or writing mouse settings. A second-computer hardware trial is still needed.
-
-To transfer customizations, export your profile on the first PC and import it through Advanced on the second. Personal profile backups and settings.zip are excluded from this release. The same configured mouse retains its onboard F13-F18 triggers when moved between PCs. Setup is guarded and refuses unfamiliar onboard profiles; the app does not reset or flash firmware.
+Verification includes a repeated close-to-tray regression check, explicit-exit check, the existing automated checks and relocated-runtime package verification. No mouse settings are written by this update.

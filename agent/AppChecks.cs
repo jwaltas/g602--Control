@@ -56,7 +56,7 @@ class AppChecks {
             using(var quiet=new G602Control(folder))using(var context=new G602ApplicationContext(quiet,true,false))using(var timer=new System.Windows.Forms.Timer{Interval=250}){
                 bool appeared=false;quiet.VisibleChanged+=delegate{if(quiet.Visible)appeared=true;};
                 if(quiet.Visible || quiet.ShowInTaskbar)throw new Exception("Background launch showed an editor/taskbar window");
-                timer.Tick+=delegate{timer.Stop();if(quiet.Visible || quiet.ShowInTaskbar || appeared)throw new Exception("Background window flashed during message loop");quiet.Close();};timer.Start();Application.Run(context);
+                timer.Tick+=delegate{timer.Stop();if(quiet.Visible || quiet.ShowInTaskbar || appeared)throw new Exception("Background window flashed during message loop");quiet.Close();if(quiet.IsDisposed || quiet.Visible || quiet.ShowInTaskbar)throw new Exception("Window close exited the app or left the editor visible");quiet.Close();if(quiet.IsDisposed)throw new Exception("Repeated editor close exited the app");quiet.RequestExit();if(!quiet.IsDisposed)throw new Exception("Explicit tray exit did not dispose the app");};timer.Start();Application.Run(context);
             }
             int events=0;using(var input=new RawInputWindow())using(var timer=new System.Windows.Forms.Timer{Interval=1000}){
                 input.Pressed+=delegate{events++;};input.Error+=delegate(string error){throw new Exception(error);};
@@ -84,7 +84,7 @@ class AppChecks {
                 }
                 if(String.Join(",",buttons)!="4,5,6,7,8,9")throw new Exception("Unexpected captured input mapping");
             }
-            File.WriteAllText(args[1],"{\"ui_rendered\":true,\"twelve_prefilled_editors\":true,\"ui_save_and_restart_reload\":true,\"invalid_ui_edit_preserves_saved_file\":true,\"ui_import_preserves_pause_and_timings\":true,\"background_has_no_visible_editor_or_taskbar_flash\":true,\"original_macro_file_unchanged\":true,\"raw_input_registered_and_removed\":true,\"real_keys_sent\":0,\"captured_macros_replayed\":"+replays+",\"button_events\":"+events+"}");
+            File.WriteAllText(args[1],"{\"ui_rendered\":true,\"twelve_prefilled_editors\":true,\"ui_save_and_restart_reload\":true,\"invalid_ui_edit_preserves_saved_file\":true,\"ui_import_preserves_pause_and_timings\":true,\"background_has_no_visible_editor_or_taskbar_flash\":true,\"editor_close_keeps_tray_alive\":true,\"explicit_exit_disposes_app\":true,\"original_macro_file_unchanged\":true,\"raw_input_registered_and_removed\":true,\"real_keys_sent\":0,\"captured_macros_replayed\":"+replays+",\"button_events\":"+events+"}");
             Console.WriteLine("UI render and live input registration smoke passed; no keyboard output");return 0;
         }catch(Exception ex){Console.Error.WriteLine(ex.Message);return 1;}
     }

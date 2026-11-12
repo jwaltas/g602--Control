@@ -1,4 +1,4 @@
-G602 CONTROL 0.3.0
+G602 CONTROL 0.3.1
 
 Close the old app and use Open G602 Control.exe. Your saved default profile
 becomes active automatically after receiver and readiness checks succeed.
@@ -75,7 +75,7 @@ Ctrl+Alt+Shift+F12 pauses playback and cancels pending tap recognition.
 The tray icon offers Pause profile / Resume profile. An explicit pause remains
 in effect even when you save edits, until you choose Resume profile.
 Focus loss cancels the current sequence and attempts held-key cleanup. Input
-during an already running macro is ignored, not queued. Closing exits entirely;
+during an already running macro is ignored, not queued. The window X hides the editor and keeps macros running. Use tray -> Exit to quit;
 minimizing keeps the app in the tray. Startup at login is optional as above.
 
 MOUSE SETUP

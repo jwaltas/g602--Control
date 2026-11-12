@@ -48,5 +48,5 @@ if ($LASTEXITCODE -ne 0) { throw 'Profile/startup/update checks failed' }
 if ($LASTEXITCODE -ne 0) { throw 'App smoke/replay checks failed' }
 python (Join-Path $repo 'package_prototype.py')
 if ($LASTEXITCODE -ne 0) { throw 'Packaging failed' }
-python (Join-Path $repo 'verify_package.py') (Join-Path $outputs 'G602-Control-0.3.0.zip')
+python (Join-Path $repo 'verify_package.py') (Join-Path $outputs 'G602-Control-0.3.1.zip')
 if ($LASTEXITCODE -ne 0) { throw 'Packaged runtime verification failed' }
