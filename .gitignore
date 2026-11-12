@@ -1,0 +1,14 @@
+__pycache__/
+*.db
+settings.zip
+.deps/
+
+*.db-shm
+*.db-wal
+*.zip
+*.whl
+*.pyd
+*.exe
+*.dll
+work/
+outputs/

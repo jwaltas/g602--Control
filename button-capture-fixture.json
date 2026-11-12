@@ -1,0 +1,130 @@
+{
+  "events": [
+    {
+      "kind": "hid",
+      "device": "HID#VID_046D&PID_C537&MI_01&Col06",
+      "reports": [
+        "8001008000"
+      ]
+    },
+    {
+      "kind": "hid",
+      "device": "HID#VID_046D&PID_C537&MI_01&Col06",
+      "reports": [
+        "8000008000"
+      ]
+    },
+    {
+      "kind": "hid",
+      "device": "HID#VID_046D&PID_C537&MI_01&Col06",
+      "reports": [
+        "8001008000"
+      ]
+    },
+    {
+      "kind": "hid",
+      "device": "HID#VID_046D&PID_C537&MI_01&Col06",
+      "reports": [
+        "8000008000"
+      ]
+    },
+    {
+      "kind": "hid",
+      "device": "HID#VID_046D&PID_C537&MI_01&Col06",
+      "reports": [
+        "8001008000"
+      ]
+    },
+    {
+      "kind": "hid",
+      "device": "HID#VID_046D&PID_C537&MI_01&Col06",
+      "reports": [
+        "8000008000"
+      ]
+    },
+    {
+      "kind": "hid",
+      "device": "HID#VID_046D&PID_C537&MI_01&Col06",
+      "reports": [
+        "8008008000"
+      ]
+    },
+    {
+      "kind": "hid",
+      "device": "HID#VID_046D&PID_C537&MI_01&Col06",
+      "reports": [
+        "8000008000"
+      ]
+    },
+    {
+      "kind": "hid",
+      "device": "HID#VID_046D&PID_C537&MI_01&Col06",
+      "reports": [
+        "8010008000"
+      ]
+    },
+    {
+      "kind": "hid",
+      "device": "HID#VID_046D&PID_C537&MI_01&Col06",
+      "reports": [
+        "8000008000"
+      ]
+    },
+    {
+      "kind": "hid",
+      "device": "HID#VID_046D&PID_C537&MI_01&Col06",
+      "reports": [
+        "8020008000"
+      ]
+    },
+    {
+      "kind": "hid",
+      "device": "HID#VID_046D&PID_C537&MI_01&Col06",
+      "reports": [
+        "8000008000"
+      ]
+    },
+    {
+      "kind": "hid",
+      "device": "HID#VID_046D&PID_C537&MI_01&Col06",
+      "reports": [
+        "8040008000"
+      ]
+    },
+    {
+      "kind": "hid",
+      "device": "HID#VID_046D&PID_C537&MI_01&Col06",
+      "reports": [
+        "8000008000"
+      ]
+    },
+    {
+      "kind": "hid",
+      "device": "HID#VID_046D&PID_C537&MI_01&Col06",
+      "reports": [
+        "8080008000"
+      ]
+    },
+    {
+      "kind": "hid",
+      "device": "HID#VID_046D&PID_C537&MI_01&Col06",
+      "reports": [
+        "8000008000"
+      ]
+    },
+    {
+      "kind": "hid",
+      "device": "HID#VID_046D&PID_C537&MI_01&Col06",
+      "reports": [
+        "8000018000"
+      ]
+    },
+    {
+      "kind": "hid",
+      "device": "HID#VID_046D&PID_C537&MI_01&Col06",
+      "reports": [
+        "8000008000"
+      ]
+    }
+  ]
+}

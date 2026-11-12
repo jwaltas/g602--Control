@@ -1,10 +1,11 @@
 """Read-only G HUB settings.db importer. Python 3.10+, standard library only."""
 import argparse, json, sqlite3
+from contextlib import closing
 from pathlib import Path
 
 def import_settings(path):
     uri = Path(path).resolve().as_uri() + '?mode=ro'
-    with sqlite3.connect(uri, uri=True) as db:
+    with closing(sqlite3.connect(uri, uri=True)) as db:
         row = db.execute('SELECT file FROM data ORDER BY _id DESC LIMIT 1').fetchone()
     if not row:
         raise ValueError('No G HUB settings record found')

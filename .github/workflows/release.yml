@@ -1,0 +1,44 @@
+name: Build Windows release
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/release.yml'
+      - 'agent/**'
+      - '*.py'
+      - '*.ps1'
+      - '*macros.json'
+      - 'button-capture-fixture.json'
+      - 'README-user.txt'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: windows-release
+  cancel-in-progress: false
+jobs:
+  release:
+    runs-on: windows-2022
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          architecture: x64
+      - name: Build and verify
+        shell: powershell
+        run: .\Build-Prototype.ps1
+      - name: Publish verified package
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_COMMIT: ${{ github.sha }}
+        run: |
+          $zip = Join-Path (Split-Path $env:GITHUB_WORKSPACE -Parent) 'outputs/G602-Control-0.3.0.zip'
+          $checksum = "$zip.sha256"
+          gh release view v0.3.0 --repo $env:GH_REPO *> $null
+          if ($LASTEXITCODE -eq 0) { throw 'Release v0.3.0 already exists; published assets are never overwritten automatically.' }
+          gh release create v0.3.0 $zip $checksum --repo $env:GH_REPO --target $env:RELEASE_COMMIT --title 'G602 Control 0.3.0 - Windows 11' --notes-file RELEASE-NOTES.md
+          if ($LASTEXITCODE -ne 0) { throw 'Publishing the verified release failed' }

@@ -1,0 +1,555 @@
+{
+  "schema_version": 1,
+  "mode": "dry-run-only",
+  "mapping_status": "G4-G9 receiver input masks verified by physical button capture",
+  "buttons": {
+    "9": {
+      "name": "trim",
+      "mask": 256,
+      "events": [
+        {
+          "kind": "key",
+          "usage": 23,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 23,
+          "down": false
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 21,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 21,
+          "down": false
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 12,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 12,
+          "down": false
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 16,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 16,
+          "down": false
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 40,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 40,
+          "down": false
+        }
+      ],
+      "default_delay_ms": 25,
+      "use_default_delay": true,
+      "timing_status": "explicit delays preserved; default-delay playback semantics unverified",
+      "warnings": []
+    },
+    "5": {
+      "name": "move",
+      "mask": 16,
+      "events": [
+        {
+          "kind": "key",
+          "usage": 16,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 16,
+          "down": false
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 18,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 18,
+          "down": false
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 25,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 8,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 25,
+          "down": false
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 8,
+          "down": false
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 40,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 40,
+          "down": false
+        }
+      ],
+      "default_delay_ms": 25,
+      "use_default_delay": true,
+      "timing_status": "explicit delays preserved; default-delay playback semantics unverified",
+      "warnings": [
+        "Overlapping key-down events preserved"
+      ]
+    },
+    "7": {
+      "name": "dim",
+      "mask": 64,
+      "events": [
+        {
+          "kind": "key",
+          "usage": 7,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 7,
+          "down": false
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 12,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 12,
+          "down": false
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 16,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 16,
+          "down": false
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 40,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 40,
+          "down": false
+        }
+      ],
+      "default_delay_ms": 25,
+      "use_default_delay": true,
+      "timing_status": "explicit delays preserved; default-delay playback semantics unverified",
+      "warnings": []
+    },
+    "6": {
+      "name": "copy",
+      "mask": 32,
+      "events": [
+        {
+          "kind": "key",
+          "usage": 6,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 6,
+          "down": false
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 18,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 18,
+          "down": false
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 19,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 19,
+          "down": false
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 28,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 28,
+          "down": false
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 40,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 40,
+          "down": false
+        }
+      ],
+      "default_delay_ms": 25,
+      "use_default_delay": true,
+      "timing_status": "explicit delays preserved; default-delay playback semantics unverified",
+      "warnings": []
+    },
+    "4": {
+      "name": "line",
+      "mask": 8,
+      "events": [
+        {
+          "kind": "key",
+          "usage": 15,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 1
+        },
+        {
+          "kind": "key",
+          "usage": 15,
+          "down": false
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 1
+        },
+        {
+          "kind": "key",
+          "usage": 12,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 1
+        },
+        {
+          "kind": "key",
+          "usage": 17,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 1
+        },
+        {
+          "kind": "key",
+          "usage": 12,
+          "down": false
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 1
+        },
+        {
+          "kind": "key",
+          "usage": 17,
+          "down": false
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 1
+        },
+        {
+          "kind": "key",
+          "usage": 8,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 1
+        },
+        {
+          "kind": "key",
+          "usage": 8,
+          "down": false
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 1
+        },
+        {
+          "kind": "key",
+          "usage": 40,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 1
+        },
+        {
+          "kind": "key",
+          "usage": 40,
+          "down": false
+        }
+      ],
+      "default_delay_ms": 50,
+      "use_default_delay": false,
+      "timing_status": "explicit delays preserved; default-delay playback semantics unverified",
+      "warnings": [
+        "Overlapping key-down events preserved"
+      ]
+    },
+    "8": {
+      "name": "rotate",
+      "mask": 128,
+      "events": [
+        {
+          "kind": "key",
+          "usage": 21,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 21,
+          "down": false
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 18,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 18,
+          "down": false
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 23,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 23,
+          "down": false
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 40,
+          "down": true
+        },
+        {
+          "kind": "delay",
+          "milliseconds": 25
+        },
+        {
+          "kind": "key",
+          "usage": 40,
+          "down": false
+        }
+      ],
+      "default_delay_ms": 25,
+      "use_default_delay": true,
+      "timing_status": "explicit delays preserved; default-delay playback semantics unverified",
+      "warnings": []
+    }
+  }
+}
